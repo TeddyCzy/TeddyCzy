@@ -27,7 +27,11 @@ STAR_FORK = re.compile(
     r"<path[^>]*></path></g>"
     r"<text[^>]*>\d+<title>\d+</title></text>"
 )
-TOTAL = re.compile(r'(text-anchor="end" fill="rgb\(255,200,55\)">)(\d+)(</text>)')
+# Anchor on the adjacent "contributions" label rather than on position or
+# fill colour -- each theme paints this number differently.
+TOTAL = re.compile(
+    r"(<text[^>]*>)\d[\d,]*(</text>)(<text[^>]*>contributions</text>)"
+)
 DATE_RANGE = re.compile(r"(>)(\d{4}-\d{2}-\d{2} / \d{4}-\d{2}-\d{2})(<)")
 
 
@@ -36,7 +40,7 @@ def patch(path, total, first, last):
         svg = f.read()
 
     svg, n_counters = STAR_FORK.subn("", svg)
-    svg, n_total = TOTAL.subn(rf"\g<1>{total:,}\g<3>", svg)
+    svg, n_total = TOTAL.subn(rf"\g<1>{total:,}\g<2>\g<3>", svg)
     svg, n_range = DATE_RANGE.subn(rf"\g<1>{first} / {last}\g<3>", svg)
 
     # Upstream changed shape if these don't match; fail loudly rather than
