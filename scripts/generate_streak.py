@@ -156,35 +156,37 @@ FIRE = (
 def card(total, cur, cur_span, best, best_span, span_all, theme_name):
     t = THEMES[theme_name]
     last_day = span_all[1]
-    w, h = 495, 195
+    # 880 matches the snake SVG, which is exactly the README content width.
+    # Anything narrower renders as a stranded box next to the full-bleed
+    # graph below it.
+    w, h = 880, 210
     col = w / 3
 
     def block(cx, num, label, span, big=False):
-        num_size = 28 if not big else 26
         parts = []
         if big:
             parts.append(
-                f'<circle cx="{cx}" cy="80" r="40" fill="none" '
+                f'<circle cx="{cx}" cy="90" r="52" fill="none" '
                 f'stroke="{t["ring"]}" stroke-width="5"/>'
             )
             parts.append(
-                f'<g transform="translate({cx}, 42)">'
+                f'<g transform="translate({cx}, 34) scale(1.35)">'
                 + FIRE.format(fire=t["fire"])
                 + "</g>"
             )
         parts.append(
-            f'<text x="{cx}" y="{88 if big else 82}" text-anchor="middle" '
-            f'fill="{t["num"]}" font-family="{FONT}" font-size="{num_size}" '
-            f'font-weight="700">{num}</text>'
+            f'<text x="{cx}" y="{102 if big else 95}" text-anchor="middle" '
+            f'fill="{t["num"]}" font-family="{FONT}" '
+            f'font-size="{34 if big else 36}" font-weight="700">{num}</text>'
         )
         parts.append(
-            f'<text x="{cx}" y="{132 if big else 116}" text-anchor="middle" '
-            f'fill="{t["label"]}" font-family="{FONT}" font-size="14" '
+            f'<text x="{cx}" y="{166 if big else 132}" text-anchor="middle" '
+            f'fill="{t["label"]}" font-family="{FONT}" font-size="16" '
             f'font-weight="600">{label}</text>'
         )
         parts.append(
-            f'<text x="{cx}" y="{152 if big else 138}" text-anchor="middle" '
-            f'fill="{t["date"]}" font-family="{FONT}" font-size="12">{span}</text>'
+            f'<text x="{cx}" y="{188 if big else 154}" text-anchor="middle" '
+            f'fill="{t["date"]}" font-family="{FONT}" font-size="13">{span}</text>'
         )
         return "\n    ".join(parts)
 
@@ -200,7 +202,7 @@ def card(total, cur, cur_span, best, best_span, span_all, theme_name):
     )
 
     dividers = "".join(
-        f'<line x1="{col*i}" y1="35" x2="{col*i}" y2="160" '
+        f'<line x1="{col*i}" y1="42" x2="{col*i}" y2="178" '
         f'stroke="{t["divider"]}" stroke-width="1"/>'
         for i in (1, 2)
     )
