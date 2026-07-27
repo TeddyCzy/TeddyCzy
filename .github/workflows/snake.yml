@@ -40,6 +40,20 @@ jobs:
             dist/github-snake.svg
             dist/github-snake-dark.svg?palette=github-dark
 
+      # Writes to a fixed profile-3d-contrib/ directory, so collect the two
+      # variants we actually reference into dist/ afterwards.
+      - name: Generate 3D contribution calendar
+        uses: yoshi389111/github-profile-3d-contrib@0.7.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+
+      - name: Collect 3D calendar into dist
+        run: |
+          cp profile-3d-contrib/profile-night-view.svg dist/contrib-3d-dark.svg
+          cp profile-3d-contrib/profile-green-animate.svg dist/contrib-3d.svg
+          ls -la dist/
+
       - name: Push to output branch
         uses: crazy-max/ghaction-github-pages@v4
         with:
