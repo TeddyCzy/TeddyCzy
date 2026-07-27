@@ -52,7 +52,15 @@ jobs:
         run: |
           cp profile-3d-contrib/profile-night-view.svg dist/contrib-3d-dark.svg
           cp profile-3d-contrib/profile-green-animate.svg dist/contrib-3d.svg
-          ls -la dist/
+
+      # Upstream prints a UTC-truncated total and star/fork counters that
+      # have no setting to disable. Rewrite both so the figure matches the
+      # streak card above it.
+      - name: Correct counts on the 3D calendar
+        env:
+          GH_LOGIN: ${{ github.repository_owner }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/patch_3d.py dist/contrib-3d-dark.svg dist/contrib-3d.svg
 
       - name: Push to output branch
         uses: crazy-max/ghaction-github-pages@v4
