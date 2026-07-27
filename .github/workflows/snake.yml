@@ -1,4 +1,4 @@
-name: Generate snake animation
+name: Generate profile cards
 
 on:
   schedule:
@@ -16,14 +16,26 @@ jobs:
       contents: write
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Both artifacts must land in the same dist/ and ship in one push:
+      # the deploy step replaces the output branch wholesale, so pushing
+      # them separately would delete whichever went first.
       - name: Generate snake SVGs
         uses: Platane/snk@v3
-        id: snake-gif
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
             dist/github-snake.svg
             dist/github-snake-dark.svg?palette=github-dark
+
+      - name: Generate streak cards
+        env:
+          GH_LOGIN: ${{ github.repository_owner }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OUT_DIR: dist
+        run: python3 scripts/generate_streak.py
 
       - name: Push to output branch
         uses: crazy-max/ghaction-github-pages@v4

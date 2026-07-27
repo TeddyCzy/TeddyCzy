@@ -53,7 +53,11 @@
 
 <div align="center">
 
-<img src="https://streak-stats.demolab.com/?user=TeddyCzy&theme=tokyonight&hide_border=true&date_format=M+j%5B%2C+Y%5D&fire=FF6B35" alt="streak stats" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/TeddyCzy/TeddyCzy/output/streak-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/TeddyCzy/TeddyCzy/output/streak.svg" />
+  <img src="https://raw.githubusercontent.com/TeddyCzy/TeddyCzy/output/streak-dark.svg" alt="streak stats" />
+</picture>
 
 <img src="https://github-readme-activity-graph.vercel.app/graph?username=TeddyCzy&theme=tokyo-night&hide_border=true&area=true&custom_title=Contribution%20Graph" alt="activity graph" />
 
