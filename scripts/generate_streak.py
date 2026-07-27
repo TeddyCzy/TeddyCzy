@@ -9,14 +9,14 @@ import json
 import os
 import sys
 import urllib.request
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 
 API = "https://api.github.com/graphql"
 
 QUERY = """
-query($login: String!) {
+query($login: String!, $from: DateTime!, $to: DateTime!) {
   user(login: $login) {
-    contributionsCollection {
+    contributionsCollection(from: $from, to: $to) {
       contributionCalendar {
         totalContributions
         weeks { contributionDays { date contributionCount } }
@@ -28,13 +28,27 @@ query($login: String!) {
 
 
 def fetch_days(login, token):
-    """Return (total, [(date, count), ...]) for the last year.
+    """Return (total, [(date, count), ...]) for roughly the last year.
 
-    No explicit from/to window: GitHub aligns the default calendar to the
-    account's own timezone. Passing a UTC window instead truncates the
-    final day for anyone east of UTC.
+    The window ends a day in the future on purpose. A GitHub App
+    installation token (what Actions hands us as GITHUB_TOKEN) gets a
+    UTC-aligned calendar, which silently drops the current day for an
+    account east of UTC; reaching past "now" pulls that day back in.
+    GitHub clamps the range, so asking for tomorrow is harmless.
     """
-    body = json.dumps({"query": QUERY, "variables": {"login": login}}).encode()
+    to = datetime.now(timezone.utc) + timedelta(days=1)
+    frm = to - timedelta(days=365)  # the API rejects windows over a year
+
+    body = json.dumps(
+        {
+            "query": QUERY,
+            "variables": {
+                "login": login,
+                "from": frm.isoformat(),
+                "to": to.isoformat(),
+            },
+        }
+    ).encode()
 
     req = urllib.request.Request(
         API,
