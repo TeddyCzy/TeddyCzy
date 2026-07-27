@@ -53,8 +53,9 @@
 
 <div align="center">
 
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=TeddyCzy&show_icons=true&theme=tokyonight&hide_border=true&count_private=true&include_all_commits=true&hide=stars,issues&custom_title=Teddy's+Activity" alt="GitHub stats" />
-<img height="165" src="https://streak-stats.demolab.com/?user=TeddyCzy&theme=tokyonight&hide_border=true&date_format=M+j%5B%2C+Y%5D" alt="streak stats" />
+<img src="https://streak-stats.demolab.com/?user=TeddyCzy&theme=tokyonight&hide_border=true&date_format=M+j%5B%2C+Y%5D&fire=FF6B35" alt="streak stats" />
+
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=TeddyCzy&theme=tokyo-night&hide_border=true&area=true&custom_title=Contribution%20Graph" alt="activity graph" />
 
 </div>
 
@@ -75,5 +76,5 @@
 ---
 
 <div align="center">
-<sub>0 public repos, 1 pull shark. 不多,但都是真的。</sub>
+<sub>这些格子 99% 来自私有仓库 — 绿是真绿,故事在别处。</sub>
 </div>
