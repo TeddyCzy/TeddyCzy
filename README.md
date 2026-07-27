@@ -19,6 +19,7 @@
 - 🔭 Currently at **[manus.ai](https://manus.ai)**
 - 🧰 Mostly **MCP servers** and **data pipelines**
 - 🌏 `UTC+08:00` — most of my commits live in private repos, so the graph below runs colder than reality
+- 📫 `ziyu@manus.ai`
 
 ---
 
