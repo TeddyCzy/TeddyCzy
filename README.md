@@ -3,7 +3,7 @@
 # Hi there, I'm Teddy 👋
 
 <a href="https://manus.ai">
-  <img src="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&weight=600&size=22&duration=3200&pause=900&color=7AA2F7&center=true&vCenter=true&width=560&lines=Building+things+at+manus.ai;MCP+servers+%26+data+pipelines;A+trading+bot+that+mostly+loses+money" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&weight=600&size=22&duration=3200&pause=900&color=7AA2F7&center=true&vCenter=true&width=560&lines=Building+things+at+manus.ai;MCP+servers+%26+data+pipelines;The+green+squares+are+real%2C+I+promise" alt="Typing SVG" />
 </a>
 
 <br/>
@@ -17,9 +17,8 @@
 ### 🧑‍💻 About
 
 - 🔭 Currently at **[manus.ai](https://manus.ai)**
-- 🧰 Mostly **MCP servers**, **data pipelines**, and **a trading bot that keeps losing money**
+- 🧰 Mostly **MCP servers** and **data pipelines**
 - 🌏 `UTC+08:00` — most of my commits live in private repos, so the graph below runs colder than reality
-- 📫 `ziyu@manus.ai`
 
 ---
 
@@ -103,18 +102,6 @@
 Because all of it lives behind an org I don't own. The squares are real, they
 just don't come with a link. This repo is the only thing I have in public, and
 it exists mostly to explain that.
-
-</details>
-
-<details>
-<summary><b>How is the trading bot doing?</b></summary>
-
-<br/>
-
-It wakes up every morning, reads the market, and places its bets with complete
-confidence. The backtest says it should be profitable. The account disagrees.
-
-The bot and I have agreed not to discuss it further.
 
 </details>
 
