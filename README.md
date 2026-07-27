@@ -3,7 +3,7 @@
 # Hi there, I'm Teddy 👋
 
 <a href="https://manus.ai">
-  <img src="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&weight=600&size=22&duration=3200&pause=900&color=7AA2F7&center=true&vCenter=true&width=560&lines=Building+AI+things+at+manus.ai;MCP+servers+%26+data+pipelines;A+trading+bot+that+mostly+loses+money" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&weight=600&size=22&duration=3200&pause=900&color=7AA2F7&center=true&vCenter=true&width=560&lines=Building+things+at+manus.ai;MCP+servers+%26+data+pipelines;A+trading+bot+that+mostly+loses+money" alt="Typing SVG" />
 </a>
 
 <br/>
@@ -16,9 +16,9 @@
 
 ### 🧑‍💻 About
 
-- 🔭 现在在 **[manus.ai](https://manus.ai)** 折腾 AI agent 相关的东西
-- 🧰 日常打交道的:**MCP servers**、**数据管道**、**一个不太赚钱的交易 bot**
-- 🌏 `UTC+08:00` — 大部分提交发生在私有仓库,所以下面的图看着比实际冷清
+- 🔭 Currently at **[manus.ai](https://manus.ai)**
+- 🧰 Mostly **MCP servers**, **data pipelines**, and **a trading bot that keeps losing money**
+- 🌏 `UTC+08:00` — most of my commits live in private repos, so the graph below runs colder than reality
 - 📫 `ziyu@manus.ai`
 
 ---
@@ -80,5 +80,5 @@
 ---
 
 <div align="center">
-<sub>这些格子 99% 来自私有仓库 — 绿是真绿,故事在别处。</sub>
+<sub>99% of these squares come from private repos. The green is real, the story is elsewhere.</sub>
 </div>
