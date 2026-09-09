@@ -19,13 +19,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Both artifacts must land in the same dist/ and ship in one push:
+      - name: Test activity graph rendering
+        run: python3 -m unittest discover -s scripts -p 'test_*.py'
+
+      # All artifacts must land in the same dist/ and ship in one push:
       # the deploy step replaces the output branch wholesale, so pushing
       # them separately would delete whichever went first.
       #
       # Streak runs first on purpose. snk is a docker action that creates
       # dist/ as root, and the runner user cannot write into it afterwards.
-      - name: Generate streak cards
+      - name: Generate streak and activity cards
         env:
           GH_LOGIN: ${{ github.repository_owner }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

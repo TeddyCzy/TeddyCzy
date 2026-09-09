@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate streak stat cards (light + dark) from the GitHub contribution calendar.
+"""Generate streak and activity cards from the GitHub contribution calendar.
 
 Self-hosted replacement for streak-stats.demolab.com, whose public instance
 times out behind GitHub's camo image proxy (persistent 504).
@@ -10,6 +10,8 @@ import os
 import sys
 import urllib.request
 from datetime import date, datetime, timedelta, timezone
+
+from activity_graph import render_activity
 
 API = "https://api.github.com/graphql"
 
@@ -233,6 +235,11 @@ if __name__ == "__main__":
         path = os.path.join(outdir, f"streak{suffix}.svg")
         with open(path, "w", encoding="utf-8") as f:
             f.write(card(total, cur, cur_span, best, best_span, span_all, name))
+        print(f"wrote {path}")
+
+        path = os.path.join(outdir, f"activity{suffix}.svg")
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(render_activity(days, name))
         print(f"wrote {path}")
 
     print(f"calendar covers {span_all[0]} .. {span_all[1]}")
