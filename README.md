@@ -60,9 +60,9 @@
 </picture>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/TeddyCzy/TeddyCzy/output/activity-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/TeddyCzy/TeddyCzy/output/activity.svg" />
-  <img src="https://raw.githubusercontent.com/TeddyCzy/TeddyCzy/output/activity-dark.svg" alt="activity graph" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/TeddyCzy/TeddyCzy/output/activity-dark.svg?v=20260909" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/TeddyCzy/TeddyCzy/output/activity.svg?v=20260909" />
+  <img src="https://raw.githubusercontent.com/TeddyCzy/TeddyCzy/output/activity-dark.svg?v=20260909" alt="activity graph" />
 </picture>
 
 </div>
