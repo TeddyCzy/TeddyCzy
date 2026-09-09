@@ -86,6 +86,21 @@ class RenderActivityTests(unittest.TestCase):
         self.assertEqual(labels[0].attrib["x"], plotted[0].attrib["cx"])
         self.assertEqual(labels[-1].attrib["x"], plotted[-1].attrib["cx"])
 
+    def test_as_of_excludes_future_row_from_window_counts_and_scale(self):
+        days = [
+            (date(2026, 9, 8), 2),
+            (date(2026, 9, 9), 4),
+            (date(2026, 9, 10), 999),
+        ]
+        root = ET.fromstring(render_activity(days, "dark", as_of=date(2026, 9, 9)))
+        plotted = points(root)
+        y_labels = [int(n.text) for n in root.findall(".//svg:text[@class='y-label']", NS)]
+
+        self.assertEqual(plotted[-1].attrib["data-date"], "2026-09-09")
+        self.assertEqual(plotted[-1].attrib["data-count"], "4")
+        self.assertNotIn("2026-09-10", {p.attrib["data-date"] for p in plotted})
+        self.assertEqual(max(y_labels), 4)
+
 
 if __name__ == "__main__":
     unittest.main()

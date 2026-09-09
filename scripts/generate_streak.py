@@ -228,6 +228,9 @@ if __name__ == "__main__":
 
     span_all = (days[0][0], days[-1][0])
     cur, cur_span, best, best_span = streaks(days)
+    # fetch_days deliberately reaches into tomorrow; keep the activity plot
+    # bounded by today in this profile's UTC+08:00 timezone.
+    activity_as_of = datetime.now(timezone(timedelta(hours=8))).date()
 
     os.makedirs(outdir, exist_ok=True)
     for name in ("dark", "light"):
@@ -239,7 +242,7 @@ if __name__ == "__main__":
 
         path = os.path.join(outdir, f"activity{suffix}.svg")
         with open(path, "w", encoding="utf-8") as f:
-            f.write(render_activity(days, name))
+            f.write(render_activity(days, name, as_of=activity_as_of))
         print(f"wrote {path}")
 
     print(f"calendar covers {span_all[0]} .. {span_all[1]}")

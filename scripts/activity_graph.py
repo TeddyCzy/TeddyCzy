@@ -25,15 +25,15 @@ def _ticks(maximum):
     return list(range(0, top + 1, step))
 
 
-def render_activity(days, theme_name):
-    """Return an SVG for the 31 calendar days ending at the last dataset date."""
+def render_activity(days, theme_name, as_of=None):
+    """Return a 31-day SVG ending no later than the optional ``as_of`` date."""
     if not days:
         raise ValueError("days must not be empty")
     if theme_name not in THEMES:
         raise ValueError(f"unknown theme: {theme_name}")
 
     theme = THEMES[theme_name]
-    end = days[-1][0]
+    end = min(days[-1][0], as_of) if as_of is not None else days[-1][0]
     start = end - timedelta(days=30)
     supplied = dict(days)
     window = [(start + timedelta(days=i), supplied.get(start + timedelta(days=i), 0))
